@@ -1,0 +1,6 @@
+# ignore ide directory
+.vscode/
+.idea/
+
+# ignore compiled files
+dist/*

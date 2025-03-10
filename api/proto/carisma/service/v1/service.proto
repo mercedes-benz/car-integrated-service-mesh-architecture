@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package carisma.service.v1;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/mercedes-benz/car-integrated-service-mesh-architecture/pkg/protobuf/carisma/service/v1";
+
+service ServiceRegistryService {
+  rpc OpenChannel(stream ServiceAnnouncement) returns (google.protobuf.Empty);
+}
+
+message ServiceAnnouncement {
+  string bundle_id = 1;
+  int32 local_port = 2;
+  RegistrationState registration_state = 3;
+
+  enum RegistrationState {
+    REGISTRATION_STATE_REGISTERED = 0;
+    REGISTRATION_STATE_UNREGISTERED = 1;
+  }
+}

@@ -1,4 +1,3 @@
-<!-- SPDX-License-Identifier: Apache-2.0 -->
 # CAR-Integrated Service Mesh Architecture
 
 The `CAR-Integrated Service Mesh Architecture` aims to enable a flexible (re-)deployment of software services within a
