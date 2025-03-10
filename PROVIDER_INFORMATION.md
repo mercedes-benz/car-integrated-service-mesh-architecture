@@ -1,0 +1,111 @@
+Registry: Amtsgericht Charlottenburg, HRB-Nr./Commercial Register: HRB 188241 B
+Geschäftsführung/Management: Steve Bentley (CEO), Daniel Burk
+
+<https://mbition.io/imprint/>
+
+## Mercedes-Benz Group AG
+
+Mercedesstraße 120
+70372 Stuttgart
+Germany
+Phone.: +49 711 17 0
+E-mail: dialog@mercedes-benz.com
+
+Represented by the Board of Management:
+Ola Källenius (Chairman), Jörg Burzer, Renata Jungo Brüngger, Sabine Kohleisen, Markus Schäfer, Britta Seeger, Hubertus Troska, Harald Wilhelm
+
+Chairman of the Supervisory Board: Bernd Pischetsrieder
+
+Commercial Register Stuttgart, No. HRB 19360
+
+<https://group.mercedes-benz.com/provider/>
+
+## Mercedes-Benz AG
+
+Mercedesstraße 120
+70372 Stuttgart
+Germany
+Phone: +49 7 11 17-0
+E-Mail: dialog@mercedes-benz.com
+
+Represented by the Board of Management:
+Ola Källenius (Chairman), Jörg Burzer, Renata Jungo Brüngger, Sabine Kohleisen, Markus Schäfer, Britta Seeger, Hubertus Troska, Harald Wilhelm
+
+Chairman of the Supervisory Board: Bernd Pischetsrieder
+
+Court of Registry: Stuttgart; commercial register no. 762873
+
+<https://group.mercedes-benz.com/provider/>
+
+## Mercedes-Benz Mobility AG
+
+Siemensstr. 7
+70469 Stuttgart
+Germany
+Phone: +49 7 11 17-0
+E-Mail: mobility@mercedes-benz.com
+
+Represented by the Board of Management:
+Franz Reiner (Chairman), Eefje Dikker, Gerrit-Michael Dülks, Jörg Lamparter and Peter Zieringer
+
+Chairman of the Supervisory Board: Harald Wilhelm
+
+Court of Registry: Stuttgart; commercial register no. 737788
+
+<https://www.mercedes-benz-mobility.com/en/legal-notice.html>
+
+
+## Mercedes-Benz Tech Motion GmbH
+
+Mercedes-Benz Tech Motion GmbH (ehemals/formerly Daimler Protics GmbH)
+Hanns-Klemm-Str. 5
+71034 Böblingen, Germany
+Phone: +4970319068296
+E-Mail: info-tech-motion@mercedes-benz.com
+
+
+Sitz und Registergericht/Domicile and Register Court: Stuttgart, HRB-Nr./Commercial Register No.: 23635
+Geschäftsführung/Management: Kai Fischer (CEO), Sascha Riegel  (CFO)
+
+<https://www.mercedes-benz-tech-motion.com/anbieter-datenschutz.html>
+
+## Mercedes-Benz Connectivity Services GmbH
+
+Mercedes-Benz Connectivity Services GmbH
+HPC Z299 | Industriestraße 19-21
+70565 Stuttgart
+Deutschland/Germany
+Tel: +49 711 17 39012
+mbconnectivity-services@mercedes-benz.com
+
+Sitz und Registergericht/Domicile and Court of Registry: Stuttgart HRB-Nr./Commercial Register No.: 727792
+Geschäftsführung/Management: Sten Rauch, Marcus Eisenhardt
+
+<https://data.mercedes-benz.com/products/connect-business#anbieter>
+
+## Mercedes-Benz.io GmbH
+
+Mercedes-Benz.io GmbH
+Industriestraße 19-21
+70565 Stuttgart (Germany)
+Phone: +49 (0) 711 172100 0
+E-Mail: whatsup-mbio@mercedes-benz.com
+
+
+Sitz und Registergericht/Domicile and Register Court: Amtsgericht Stuttgart HRB-Nr./Commercial Register No.: 752256
+Geschäftsführung/Management: Bastian Gauer (CEO), Julia Göpel (CFO)
+
+https://www.mercedes-benz.io/imprint/
+
+## Mercedes-Benz R&D, India
+
+Mercedes-Benz Research and Development India
+Embassy Crest
+Plot No. 5-P, EPIP Zone, Phase 1, Whitefield Road,
+Near Satya Sai Baba Hospital ,Bengaluru ,Karnataka – 560066
+
+Phone: +91 80 6150 6600, +91 80 6150 6600
+E-Mail: legalandcompliance_mbrdi@mercedes-benz.com
+Website: https://www.mbrdi.co.in/
+
+Certificate of Incorporation (CIN): U74110KA1996PTC021375

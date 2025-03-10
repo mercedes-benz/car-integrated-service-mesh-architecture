@@ -1,0 +1,89 @@
+<!--SPDX-License-Identifier: Apache-2.0-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CARISMA Status Manager</title>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>CARISMA Status Manager ({{.}})</h1>
+
+    <table id="containerList">
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Ports</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody />
+    </table>
+
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+    <script>
+    let socket = new WebSocket("ws://localhost:8010/ws");
+
+    function startContainer(id) {
+        const msg = {
+            action: "start",
+            id: id
+        };
+
+        socket.send(JSON.stringify(msg));
+        alert("Request sent. Please wait for the container to start.");
+    }
+
+    function stopContainer(id) {
+        const msg = {
+            action: "stop",
+            id: id
+        };
+
+        socket.send(JSON.stringify(msg));
+        alert("Request sent. Please wait for the container to stop.");
+    }
+
+    socket.onmessage = (e) => {
+        // Start with table heading
+        var containerData = '';
+
+        // Append container data
+        $.each(JSON.parse(e.data), function(key, value) {
+            containerData += '<tr>';
+            containerData += '<td>' + value.ID + '</td>';
+            containerData += '<td>' + value.Image + '</td>';
+            containerData += '<td>' + value.Ports + '</td>';
+            containerData += '<td>' + value.Status + '</td>';
+
+            if (value.Status.includes('Up')) {
+                containerData += '<td><a onClick="stopContainer(\'' + value.ID + '\')">Stoppen</a></td>';
+            } else {
+                containerData += '<td><a onClick="startContainer(\'' + value.ID + '\')">Starten</a></td>';
+            }
+
+            containerData += '</tr>';
+        });
+
+        $('#containerList > tbody').html(containerData);
+    };
+    </script>
+  </body>
+</html>

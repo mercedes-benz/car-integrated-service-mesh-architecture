@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package carisma.node.v1;
+
+option go_package = "github.com/mercedes-benz/car-integrated-service-mesh-architecture/pkg/protobuf/carisma/node/v1";
+
+service NodeRegistryService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc OpenChannel(stream DeploymentConfiguration) returns (stream DeploymentConfiguration);
+}
+
+message RegisterRequest {
+  string address = 1;
+  int32 port = 2;
+}
+
+message RegisterResponse {
+  string id = 1;
+}
+
+message DeploymentConfiguration {
+  string json = 1;
+  StateType state_type = 2;
+
+  enum StateType {
+    STATE_TYPE_DESIRED = 0;
+    STATE_TYPE_ACTUAL = 1;
+  }
+}
