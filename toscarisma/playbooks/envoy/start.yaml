@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Start the container
+      command: podman start {{ input_attr_container_id }}

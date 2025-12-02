@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Stop the container
+      command: podman stop {{ input_attr_container_id }}

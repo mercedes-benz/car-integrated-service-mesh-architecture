@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Delete the container
+      command: podman rm {{ input_attr_container_id }}

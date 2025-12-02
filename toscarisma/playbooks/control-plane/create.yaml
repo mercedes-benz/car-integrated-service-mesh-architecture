@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Create the container
+      command: "podman create --name {{ input_attr_tosca_name }} -p {{ input_attr_carisma_api_port }}:80 {{ input_attr_container_image_name }}"
+      register: container_id_result
+
+    - name: Set container id
+      set_stats:
+        data:
+          container_id: "{{ container_id_result.stdout.strip() }}"
+        per_host: no

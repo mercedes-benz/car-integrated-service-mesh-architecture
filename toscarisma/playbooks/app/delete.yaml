@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Remove communication path
+      script: >
+        /opt/carisma/scripts/remove-communication-path.sh
+        "{{ input_attr_carisma_host }}:{{ input_attr_carisma_port }}" 
+        "{{ input_attr_app_name }}"
+        "{{ input_attr_app_host }}"
+        "{{ input_attr_app_service_port }}"
+
+    - name: Delete the container
+      command: podman rm {{ input_attr_container_id }}
