@@ -1,0 +1,16 @@
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Create the container
+      command: >-
+        podman create --name {{ input_attr_app_name }} --env 'EGRESS_PORT={{
+        input_attr_app_host_egress_port }}' -P {{
+        input_attr_container_image_name }}
+      register: container_id_result
+  
+    - name: Set container id
+      set_stats:
+        data:
+          container_id: '{{ container_id_result.stdout.strip() }}'
+        per_host: 'no'

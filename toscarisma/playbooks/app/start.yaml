@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Start the container
+      command: podman start {{ input_attr_container_id }}
+
+    - name: Get first assigned port
+      shell: "podman port {{ input_attr_app_name }} | head -1 | cut -d':' -f2"
+      register: port_result
+
+    - name: Set service port
+      set_stats:
+        data:
+          service_port: "{{ port_result.stdout.strip() }}"
+        per_host: no

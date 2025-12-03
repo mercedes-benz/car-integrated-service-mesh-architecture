@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Establish communication path
+      script: >
+        /opt/carisma/scripts/add-communication-path.sh
+        "{{ input_attr_carisma_host }}:{{ input_attr_carisma_port }}"
+        "{{ input_attr_app_name }}"
+        "{{ input_attr_app_host }}"
+        "{{ input_attr_service_name }}"
+        "{{ input_attr_service_host }}"
+        "{{ input_attr_service_host_ingress_port }}"
+        "{{ input_attr_service_port }}"

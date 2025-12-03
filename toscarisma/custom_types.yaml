@@ -1,0 +1,353 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+metadata:
+  template_author: Kevin Klein on behalf of MBition GmbH
+  template_name: casrisma_custom_types
+  template_version: 1.0.0
+
+description: >-
+  Contains the custom types definition belonging to the CAR-Integrated Service
+  Mesh Architecture
+
+node_types:
+  carisma.nodes.HPC:
+    derived_from: tosca.nodes.Compute
+    attributes:
+      ingress_port:
+        type: integer
+      egress_port:
+        type: integer
+      is_central:
+        type: boolean
+      node_id:
+        type: string
+    interfaces:
+      Standard:
+        inputs:
+          input_attr_host:
+            value:
+              get_attribute:
+                - SELF
+                - tosca_name
+            type: string
+        operations:
+          start: playbooks/hpc/start.yaml
+          stop: playbooks/hpc/stop.yaml
+
+  carisma.nodes.ControlPlane:
+    derived_from: tosca.nodes.SoftwareComponent
+    attributes:
+      carisma_api_port:
+        type: integer
+        default: 8016
+      container_image_name:
+        type: string
+        default: "localhost/carisma-control-plane:latest"
+      container_id:
+        type: string
+        default: ""
+    requirements:
+      - host:
+          capability: tosca.capabilities.Container
+          node: carisma.nodes.HPC
+          relationship: tosca.relationships.HostedOn
+          occurrences:
+            - 1
+            - 1
+    capabilities:
+      carisma_api_endpoint:
+        type: tosca.capabilities.Endpoint
+        occurrences:
+          - 1
+          - 1
+    interfaces:
+      Standard:
+        inputs:
+          input_attr_tosca_name:
+            value:
+              get_attribute:
+                - SELF
+                - tosca_name
+            type: string
+          input_attr_carisma_api_port:
+            value:
+              get_attribute:
+                - SELF
+                - carisma_api_port
+            type: string
+          input_attr_container_image_name:
+            value:
+              get_attribute:
+                - SELF
+                - container_image_name
+            type: string          
+          input_attr_container_id:
+            value:
+              get_attribute:
+                - SELF
+                - container_id
+            type: string
+        operations:
+          create: playbooks/control-plane/create.yaml
+          delete: playbooks/control-plane/delete.yaml
+          start: playbooks/control-plane/start.yaml
+          stop: playbooks/control-plane/stop.yaml
+
+  carisma.nodes.Envoy:
+    derived_from: tosca.nodes.SoftwareComponent
+    attributes:
+      container_image_name:
+        type: string
+        default: "envoyproxy/envoy:distroless-v1.34-latest"
+      container_id:
+        type: string
+        default: ""
+    capabilities:
+      egress_endpoint:
+        type: tosca.capabilities.Endpoint
+        occurrences:
+          - 1
+          - 1
+    requirements:
+      - host:
+          capability: tosca.capabilities.Container
+          node: carisma.nodes.HPC
+          relationship: tosca.relationships.HostedOn
+          occurrences:
+            - 1
+            - 1
+      - carisma_api_endpoint:
+          capability: tosca.capabilities.Endpoint
+          node: carisma.nodes.ControlPlane
+          relationship: tosca.relationships.ConnectsTo
+          occurrences:
+            - 1
+            - 1
+    interfaces:
+      Standard:
+        inputs:
+          input_attr_tosca_name:
+            value:
+              get_attribute:
+                - SELF
+                - tosca_name
+          input_attr_host:
+            value:
+              get_attribute:
+                - SELF
+                - host
+                - tosca_name
+            type: string
+          input_attr_ingress_port:
+            value:
+              get_attribute:
+                - SELF
+                - host
+                - ingress_port
+            type: integer
+          input_attr_egress_port:
+            value:
+              get_attribute:
+                - SELF
+                - host
+                - egress_port
+            type: integer
+          input_attr_carisma_host:
+            value:
+              get_attribute:
+                - SELF
+                - carisma_api_endpoint
+                - host
+                - tosca_name
+            type: string
+          input_attr_carisma_port:
+            value:
+              get_attribute:
+                - SELF
+                - carisma_api_endpoint
+                - carisma_api_port
+            type: integer
+          input_attr_container_image_name:
+            value:
+              get_attribute:
+                - SELF
+                - container_image_name
+            type: string          
+          input_attr_container_id:
+            value:
+              get_attribute:
+                - SELF
+                - container_id
+            type: string
+        operations:
+          create: playbooks/envoy/create.yaml
+          delete: playbooks/envoy/delete.yaml
+          start: playbooks/envoy/start.yaml
+          stop: playbooks/envoy/stop.yaml
+
+  carisma.nodes.App:
+    derived_from: tosca.nodes.SoftwareComponent
+    attributes:
+      service_port:
+        type: integer
+        default: -1
+      container_image_name:
+        type: string
+      container_id:
+        type: string
+        default: ""
+    requirements:
+      - host:
+          capability: tosca.capabilities.Container
+          node: carisma.nodes.HPC
+          relationship: tosca.relationships.HostedOn
+          occurrences:
+            - 1
+            - 1
+      - service_endpoint:
+          capability: tosca.capabilities.Endpoint
+          node: carisma.nodes.App
+          relationship: carisma.relationships.Calls
+          occurrences:
+            - 0
+            - UNBOUNDED
+      - envoy_egress_endpoint:
+          capability: tosca.capabilities.Endpoint
+          node: carisma.nodes.Envoy
+          relationship: tosca.relationships.ConnectsTo
+          occurrences:
+            - 1
+            - 1
+      - carisma_api_endpoint:
+          capability: tosca.capabilities.Endpoint
+          node: carisma.nodes.ControlPlane
+          relationship: tosca.relationships.ConnectsTo
+          occurrences:
+            - 1
+            - 1
+    interfaces:
+      Standard:
+        inputs:
+          input_attr_carisma_host:
+            value:
+              get_attribute:
+                - SELF
+                - carisma_api_endpoint
+                - host
+                - tosca_name
+            type: string
+          input_attr_carisma_port:
+            value:
+              get_attribute:
+                - SELF
+                - carisma_api_endpoint
+                - carisma_api_port
+            type: integer
+          input_attr_app_name:
+            value:
+              get_attribute:
+                - SELF
+                - tosca_name
+            type: boolean
+          input_attr_app_host:
+            value:
+              get_attribute:
+                - SELF
+                - host
+                - tosca_name
+            type: string
+          input_attr_app_host_egress_port:
+            value:
+              get_attribute:
+                - SELF
+                - host
+                - egress_port
+            type: integer
+          input_attr_app_service_port:
+            value:
+              get_attribute:
+                - SELF
+                - service_port
+            type: boolean
+          input_attr_container_image_name:
+            value:
+              get_attribute:
+                - SELF
+                - container_image_name
+            type: string          
+          input_attr_container_id:
+            value:
+              get_attribute:
+                - SELF
+                - container_id
+            type: string
+        operations:
+          create: playbooks/app/create.yaml
+          delete: playbooks/app/delete.yaml
+          start: playbooks/app/start.yaml
+          stop: playbooks/app/stop.yaml
+
+relationship_types:
+  carisma.relationships.Calls:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        operations:
+          pre_configure_source:
+            inputs:
+              input_attr_carisma_host:
+                value:
+                  get_attribute:
+                    - SOURCE
+                    - carisma_api_endpoint
+                    - host
+                    - tosca_name
+                type: string
+              input_attr_carisma_port:
+                value:
+                  get_attribute:
+                    - SOURCE
+                    - carisma_api_endpoint
+                    - carisma_api_port
+                type: integer
+              input_attr_app_name:
+                value:
+                  get_attribute:
+                    - SOURCE
+                    - tosca_name
+                type: string
+              input_attr_app_host:
+                value:
+                  get_attribute:
+                    - SOURCE
+                    - host
+                    - tosca_name
+                type: string
+              input_attr_service_name:
+                value:
+                  get_attribute:
+                    - TARGET
+                    - tosca_name
+                type: string
+              input_attr_service_host:
+                value:
+                  get_attribute:
+                    - TARGET
+                    - host
+                    - tosca_name
+                type: string
+              input_attr_service_port:
+                value:
+                  get_attribute:
+                    - TARGET
+                    - service_port
+                type: integer
+              input_attr_service_host_ingress_port:
+                value:
+                  get_attribute:
+                    - TARGET
+                    - envoy_egress_endpoint
+                    - host
+                    - ingress_port
+                type: integer
+            implementation: playbooks/calls/configure.yaml

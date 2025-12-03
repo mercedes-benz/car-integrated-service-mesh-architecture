@@ -1,0 +1,63 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - file: /opt/carisma/toscarisma/custom_types.yaml
+
+topology_template:
+
+  node_templates:
+    central-hpc:
+      type: carisma.nodes.HPC
+      attributes:
+        private_address: localhost
+        public_address: localhost
+        ingress_port: 8000
+        egress_port: 9000
+        is_central: true
+        node_id: { get_attribute: [SELF, node_id] }
+
+    satellite-hpc-a:
+      type: carisma.nodes.HPC
+      attributes:
+        private_address: localhost
+        public_address: localhost
+        ingress_port: 8200
+        egress_port: 9200
+        is_central: false
+        node_id: { get_attribute: [SELF, node_id] }
+
+    carisma-control-plane:
+      type: carisma.nodes.ControlPlane
+      attributes:
+        carisma_api_port: 8016
+      requirements:
+        - host: central-hpc
+
+    envoy-central-hpc:
+      type: carisma.nodes.Envoy
+      requirements:
+        - host: central-hpc
+        - carisma_api_endpoint: carisma-control-plane
+    
+    envoy-satellite-hpc-a:
+      type: carisma.nodes.Envoy
+      requirements:
+        - host: satellite-hpc-a
+        - carisma_api_endpoint: carisma-control-plane
+    
+    client:
+      type: carisma.nodes.App
+      attributes:
+        service_port: 666
+      requirements:
+        - host: central-hpc
+        - service_endpoint: service
+        - envoy_egress_endpoint: envoy-central-hpc
+        - carisma_api_endpoint: carisma-control-plane
+  
+    service:
+      type: carisma.nodes.App
+      requirements:
+        - host: satellite-hpc-a
+        - envoy_egress_endpoint: envoy-satellite-hpc-a
+        - carisma_api_endpoint: carisma-control-plane
