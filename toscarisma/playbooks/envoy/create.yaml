@@ -52,7 +52,7 @@
                                 protocol: TCP
                                 address: "{{ input_attr_carisma_host }}"
                                 port_value: {{ input_attr_carisma_port }}
-        dest: /Users/KEKLEI/carisma/envoy_config.yaml
+        dest: /etc/envoy/envoy.yaml
         mode: '0644'
 
     - name: Create the container
