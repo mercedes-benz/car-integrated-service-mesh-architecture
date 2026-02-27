@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>RB</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>VRTE</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>Executables</SHORT-NAME>
+              <ELEMENTS>
+                <EXECUTABLE>
+                  <SHORT-NAME>arapipcd</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="VRTE">
+                        <SD GID="path">/opt/vrte/rb-com/bin/arapipcd</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                  <ROOT-SW-COMPONENT-PROTOTYPE>
+                    <SHORT-NAME>arapipcd_RootSwComponent</SHORT-NAME>
+                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/mercedes_benz/com/AraCM_Method_Benchmark_Component</APPLICATION-TYPE-TREF>
+                  </ROOT-SW-COMPONENT-PROTOTYPE>
+                </EXECUTABLE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>Processes</SHORT-NAME>
+              <ELEMENTS>
+                <PROCESS>
+                  <SHORT-NAME>Arapipcd_A</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="VRTE">
+                        <SD GID="uid">0</SD>
+                        <SD GID="gid">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <EXECUTABLE-REF DEST="EXECUTABLE">/RB/VRTE/Executables/arapipcd</EXECUTABLE-REF>
+                  <STATE-DEPENDENT-STARTUP-CONFIGS>
+                    <STATE-DEPENDENT-STARTUP-CONFIG>
+                      <FUNCTION-GROUP-STATE-IREFS>
+                        <FUNCTION-GROUP-STATE-IREF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/FunctionGroupSets/FunctionGroupSet_0/ModeDeclarationGroupPrototype_0</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDeclarationGroups/MachineFG/Restart</TARGET-MODE-DECLARATION-REF>
+                        </FUNCTION-GROUP-STATE-IREF>
+                        <FUNCTION-GROUP-STATE-IREF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/FunctionGroupSets/FunctionGroupSet_0/ModeDeclarationGroupPrototype_0</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDeclarationGroups/MachineFG/Shutdown</TARGET-MODE-DECLARATION-REF>
+                        </FUNCTION-GROUP-STATE-IREF>
+                        <FUNCTION-GROUP-STATE-IREF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/FunctionGroupSets/FunctionGroupSet_0/ModeDeclarationGroupPrototype_0</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDeclarationGroups/MachineFG/Startup</TARGET-MODE-DECLARATION-REF>
+                        </FUNCTION-GROUP-STATE-IREF>
+                      </FUNCTION-GROUP-STATE-IREFS>
+                      <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Machine_A/Machine_A/OsModuleInstantiation_0/ResourceGroup_0</RESOURCE-GROUP-REF>
+                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/RB/VRTE/StartupConfigSets/arapipcd_StartupConfigSet_arapipcd_StartupConfig</STARTUP-CONFIG-REF>
+                    </STATE-DEPENDENT-STARTUP-CONFIG>
+                  </STATE-DEPENDENT-STARTUP-CONFIGS>
+                </PROCESS>
+                <PROCESS>
+                  <SHORT-NAME>Arapipcd_B</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="VRTE">
+                        <SD GID="uid">0</SD>
+                        <SD GID="gid">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <EXECUTABLE-REF DEST="EXECUTABLE">/RB/VRTE/Executables/arapipcd</EXECUTABLE-REF>
+                  <STATE-DEPENDENT-STARTUP-CONFIGS>
+                    <STATE-DEPENDENT-STARTUP-CONFIG>
+                      <FUNCTION-GROUP-STATE-IREFS>
+                        <FUNCTION-GROUP-STATE-IREF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/FunctionGroupSets/FunctionGroupSet_0/ModeDeclarationGroupPrototype_1</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDeclarationGroups/MachineFG/Restart</TARGET-MODE-DECLARATION-REF>
+                        </FUNCTION-GROUP-STATE-IREF>
+                        <FUNCTION-GROUP-STATE-IREF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/FunctionGroupSets/FunctionGroupSet_0/ModeDeclarationGroupPrototype_1</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDeclarationGroups/MachineFG/Shutdown</TARGET-MODE-DECLARATION-REF>
+                        </FUNCTION-GROUP-STATE-IREF>
+                        <FUNCTION-GROUP-STATE-IREF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/FunctionGroupSets/FunctionGroupSet_0/ModeDeclarationGroupPrototype_1</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDeclarationGroups/MachineFG/Startup</TARGET-MODE-DECLARATION-REF>
+                        </FUNCTION-GROUP-STATE-IREF>
+                      </FUNCTION-GROUP-STATE-IREFS>
+                      <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Machines/Machine_B/OsModuleInstantiation_1/ResourceGroup_1</RESOURCE-GROUP-REF>
+                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/RB/VRTE/StartupConfigSets/arapipcd_B_StartupConfigSet_arapipcd_B_StartupConfig</STARTUP-CONFIG-REF>
+                    </STATE-DEPENDENT-STARTUP-CONFIG>
+                  </STATE-DEPENDENT-STARTUP-CONFIGS>
+                </PROCESS>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>StartupConfigSets</SHORT-NAME>
+              <ELEMENTS>
+                <STARTUP-CONFIG>
+                  <SHORT-NAME>arapipcd_StartupConfigSet_arapipcd_StartupConfig</SHORT-NAME>
+                  <ENVIRONMENT-VARIABLES>
+                    <TAG-WITH-OPTIONAL-VALUE>
+                      <KEY>LD_LIBRARY_PATH</KEY>
+                      <VALUE>/lib:/usr/lib:/opt/vrte/lib</VALUE>
+                    </TAG-WITH-OPTIONAL-VALUE>
+                  </ENVIRONMENT-VARIABLES>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>10.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG>
+                  <SHORT-NAME>arapipcd_B_StartupConfigSet_arapipcd_B_StartupConfig</SHORT-NAME>
+                  <ENVIRONMENT-VARIABLES>
+                    <TAG-WITH-OPTIONAL-VALUE>
+                      <KEY>LD_LIBRARY_PATH</KEY>
+                      <VALUE>/lib:/usr/lib:/opt/vrte/lib</VALUE>
+                    </TAG-WITH-OPTIONAL-VALUE>
+                  </ENVIRONMENT-VARIABLES>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>10.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>ProcessToMachineMappings</SHORT-NAME>
+              <ELEMENTS>
+                <PROCESS-TO-MACHINE-MAPPING-SET>
+                  <SHORT-NAME>arapipcd_ExecutionManifest_ProcessToMachineMappingSet</SHORT-NAME>
+                  <PROCESS-TO-MACHINE-MAPPINGS>
+                    <PROCESS-TO-MACHINE-MAPPING>
+                      <SHORT-NAME>RouDi_Machine_A_Mapping</SHORT-NAME>
+                      <MACHINE-REF DEST="MACHINE">/Machine_A/Machine_A</MACHINE-REF>
+                      <PERSISTENCY-CENTRAL-STORAGE-URI>/opt/vrte/usr/str-metadata</PERSISTENCY-CENTRAL-STORAGE-URI>
+                      <PROCESS-REF DEST="PROCESS">/RB/VRTE/Processes/Arapipcd_A</PROCESS-REF>
+                    </PROCESS-TO-MACHINE-MAPPING>
+                    <PROCESS-TO-MACHINE-MAPPING>
+                      <SHORT-NAME>RouDi_B_Machine_B_Mapping</SHORT-NAME>
+                      <MACHINE-REF DEST="MACHINE">/Machines/Machine_B</MACHINE-REF>
+                      <PERSISTENCY-CENTRAL-STORAGE-URI>/opt/vrte/usr/str-metadata</PERSISTENCY-CENTRAL-STORAGE-URI>
+                      <PROCESS-REF DEST="PROCESS">/RB/VRTE/Processes/Arapipcd_B</PROCESS-REF>
+                    </PROCESS-TO-MACHINE-MAPPING>
+                  </PROCESS-TO-MACHINE-MAPPINGS>
+                </PROCESS-TO-MACHINE-MAPPING-SET>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

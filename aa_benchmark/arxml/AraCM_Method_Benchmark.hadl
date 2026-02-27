@@ -1,0 +1,24 @@
+import AUTOSAR.StdTypes.string
+ 
+package mercedes_benz.com { 
+    struct MethodRequestStruct {
+		message of string
+	}
+	
+	struct MethodResponseStruct {
+		message of string
+	}
+	
+	typedef MsgRequest of MethodRequestStruct
+	
+	typedef MsgResponse of MethodResponseStruct
+	
+	interface AraCM_Method_Benchmark namespace com.mercedes_benz.method_benchmark {
+		method MethodIO (in m_value_in of MsgRequest, out m_value_out of MsgResponse)
+	}	
+	
+	component AraCM_Method_Benchmark_Component {
+		provide PPort for AraCM_Method_Benchmark
+		require RPort for AraCM_Method_Benchmark
+	}
+}
