@@ -1,37 +1,58 @@
+<!--
+SPDX-FileCopyrightText: 2025 Mercedes-Benz Tech Innovation GmbH
+
+SPDX-License-Identifier: MIT
+-->
+
 # Contributing
 
-This document explains how to contribute to this project.
-By contributing you will agree that your contribution will be put under the same license as this repository.
+This document explains how to contribute to the Car-Integrated Service Mesh Architecture (CARISMA) project. By contributing, you agree that your contribution will be licensed under the MIT License.
 
 ## Table of Contents
-- CLA
-- Communication
-- Contributions
-- Quality
 
-## CLA
-
-Before you can contribute, you will need to sign our cla [Contributor License Agreement](https://github.com/mercedes-benz/foss/blob/master/CONTRIBUTORS_LICENSE_AGREEMENT.md) and send the signed CLA to [cla-mbition@mercedes-benz.com](mailto:cla-mbition@mercedes-benz.com).
+- [Communication](#communication)
+- [Contributions](#contributions)
 
 ## Communication
 
-For communication please respect our [FOSS Code of Conduct](https://github.com/mercedes-benz.com/foss/blob/master/CODE_OF_CONDUCT.md).
+For communication, please respect our [FOSS Code of Conduct](https://github.com/mercedes-benz/.github/blob/main/CODE_OF_CONDUCT.md).
 
-The following communication channels exist for this project:
-- Github for reporting and claiming issues:  
+The following communication channels are available for this project:
+- GitHub for reporting and claiming issues: https://github.com/mercedes-benz/car_integrated_service_mesh_architecture/issues
 
-Transparent and open communication is important to us. 
-Thus, all project-related communication should happen only through these channels and in English. 
-Issue-related communication should happen within the concerned issue.
+Transparent and open communication is important to us. Therefore, all project-related communication should take place exclusively through these channels and in English. Issue-related communication should happen within the relevant issue.
 
 ## Contributions
-If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
 
-When submitting code, please make every effort to follow existing conventions and style in order to keep the code as readable as possible.
+If you would like to contribute code, you can do so through Mercedes-Benz using the standard [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow).
 
-If you are new to contributing in Github, [First Contributions](https://github.com/firstcontributions/first-contributions) might be a good starting point.
+When submitting code, please make every effort to follow existing conventions and style to keep the code as readable as possible.
 
-## Quality
-Please ensure that for all contributions, the corresponding documentation is in-sync and up-to-date. All documentation should be in English language. 
+If you are new to contributing on GitHub, [First Contributions](https://github.com/firstcontributions/first-contributions) might be a good starting point.
 
-We assume that for every non-trivial contribution, the project has been built and tested prior to the contribution. 
+### Developer Certificate of Origin
+
+Contributors must agree to the "Developer Certificate of Origin Version 1.1" (DCO) and comply with the sign-off procedure for contributing to CARISMA.
+All contributions submitted to the CARISMA repository have to carry a signed-off-by statement in the commit message using the following format:
+
+    Signed-off-by: Firstname Lastname <email.address>
+
+where the specified email address must be associated with your [GitHub account](https://docs.github.com/en/account-and-profile/concepts/email-addresses). If a commit does not include such a signed-off-by statement, the pull request cannot be merged into the official CARISMA repository. By adding signed-off-by statements to your commit messages, you confirm that you have the necessary rights to contribute the respective changes.
+
+
+### Developer Certificate of Origin (Text)
+```text
+Developer's Certificate of Origin 1.1
+
+By making a contribution to this project, I certify that:
+
+(a) The contribution was created in whole or in part by me and I have the right to submit it under the open source license indicated in the file; or
+
+(b) The contribution is based upon previous work that, to the best of my knowledge, is covered under an appropriate open source license and I have the right under that license to submit that work with modifications, whether created in whole or in part by me, under the same open source license (unless I am permitted to submit under a different license), as indicated in the file; or
+
+(c) The contribution was provided directly to me by some other person who certified (a), (b) or (c) and I have not modified it.
+
+(d) I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it, including my sign-off) is maintained indefinitely and may be redistributed consistent with this project or the open source license(s) involved.
+```
+
+The text of the DCO is also available at <https://developercertificate.org>.
